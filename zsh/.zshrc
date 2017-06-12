@@ -1,18 +1,26 @@
-export ZSH=/home/me/.oh-my-zsh
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="clean"
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
-plugins=(git,thefuck)
+ZSH_THEME="ilikemytheme"
 
+# Useful alias
+alias code="/mnt/c/Program\ Files\ \(x86\)/Microsoft\ VS\ Code/Code.exe"
+alias npm="/usr/bin/npm"
+alias gradle="/mnt/c/gradle/bin/gradle"
+alias rustc="/mnt/c/Users/me/.cargo/bin/rustc.exe"
+
+# More useful things
 source $ZSH/oh-my-zsh.sh
+source ~/.save-ssh.sh
 
-export GOPATH=/home/me/dev/GoDev
-export PATH=$PATH:$GOPATH/bin
+# Git aliases
+alias g="git"
+alias ga="git add"
+alias gd="git diff"
+alias gc="git commit"
+alias gp="git push"
+alias gpu="git push -u"
 
-eval "$(thefuck --alias FUCK)"
-eval "$(thefuck --alias)"
-
-source /home/me/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export NVM_DIR="/home/me/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+cd ~/dev
