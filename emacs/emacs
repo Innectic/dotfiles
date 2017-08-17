@@ -1,0 +1,70 @@
+;; Setup Melpa / elpa stuff
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+		    (not (gnutls-available-p))))
+       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+  (add-to-list 'package-archives (cons "melpa" url) t))
+(when (< emacs-major-version 24)
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
+(package-initialize)
+
+;; Always have 4-space indention.
+(setq default-tab-width 4)
+
+;; GUI stuff
+
+;; Hide all the things.
+;; Using GUIs is for noobs!
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+;; Delete selected text when typing starts
+(delete-selection-mode 1)
+
+;; Set colors for all the things
+(set-foreground-color "white")
+(set-background-color "#072627")
+;; Active mode line
+(set-face-background 'mode-line "#D2B58D")
+(set-face-foreground 'mode-line "#072627")
+;; Inactive mode line
+(set-face-background 'mode-line-inactive "#CCCBCD")
+(set-face-foreground 'mode-line-inactive "#494D55")
+;; Set the color of the cursor
+(set-cursor-color "#91ED92")
+;; Remove the dumb border / shadow on the mode-line
+(set-face-attribute 'mode-line nil
+		    :box '(:width 0))
+
+;; control + q removes everything right of the cursor (on the line)
+(global-set-key (kbd "C-q") 'kill-line)
+;; meta + [direction] arrow moves in that direction-pane-wise
+(global-set-key (kbd "M-<up>") 'windmove-up)
+(global-set-key (kbd "M-<down>") 'windmove-down)
+(global-set-key (kbd "M-<left>") 'windmove-left)
+(global-set-key (kbd "M-<right>") 'windmove-right)
+
+;; Use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; ===========================================
+;; PACKAGE HANDLING STUFF DO NOT TOUCH EVER!!!
+;; ===========================================
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (go-mode nim-mode rust-mode emojify neotree typescript-mode haskell-mode python-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; =================================
+;; PACKAGE HANDLING STUFF ENDS HERE.
+;; =================================
