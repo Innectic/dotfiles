@@ -13,7 +13,6 @@ alias rustc="/mnt/c/Users/me/.cargo/bin/rustc.exe"
 
 # More useful things
 source $ZSH/oh-my-zsh.sh
-source ~/.save-ssh.sh
 
 # Git aliases
 alias g="git"
